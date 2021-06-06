@@ -27,7 +27,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/submit"
+            android:id="@+id/submit_btn"
             android:text="SUBMIT"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -92,6 +92,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="16dp"
+        android:id="@+id/questionView"
         app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

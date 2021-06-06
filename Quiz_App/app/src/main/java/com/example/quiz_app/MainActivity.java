@@ -3,6 +3,7 @@ package com.example.quiz_app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,10 +34,13 @@ public class MainActivity extends AppCompatActivity {
                 String difficulty=String.valueOf(difficultyDropdown.getSelectedItem());
                 String url=getUrl(category,difficulty);
                 apiRequest(v.getContext(),url);
+                Intent quiz=new Intent(MainActivity.this,Question.class);
                 Log.d("test","test");
+                startActivity(quiz);
             }
         });
     }
+
     //utility functions
     void apiRequest(Context context,String url)
     {
@@ -101,4 +105,5 @@ public class MainActivity extends AppCompatActivity {
 
         return url;
     }
+
 }
