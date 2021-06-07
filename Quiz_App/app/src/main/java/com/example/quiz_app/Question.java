@@ -12,6 +12,10 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class Question extends AppCompatActivity {
@@ -20,6 +24,7 @@ public class Question extends AppCompatActivity {
     private Button submit,clr_btn;
     private ImageButton prev,next;
     ArrayList<QuestionModel>list;
+    public static JSONArray response;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +34,7 @@ public class Question extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_question);
         init();
-        setData("1/10","GK");
+        createObjects();
         //Due to this Code the recyclerView ANd items in recyclerview will Appear in your Activity
 
         QuestionAdapter adapter=new QuestionAdapter(list);
@@ -40,18 +45,34 @@ public class Question extends AppCompatActivity {
     }
     private void init(){
         questionView=findViewById(R.id.questionView);
-        question_count=findViewById(R.id.questionNo);
-        cateogry=findViewById(R.id.category);
         submit=findViewById(R.id.submit_btn);
         clr_btn=findViewById(R.id.clr_btn);
         prev=findViewById(R.id.previous);
         next=findViewById(R.id.next);
+    }
+
+    private void createObjects()
+    {
         list=new ArrayList<>();
-        list.add(new QuestionModel("What is Your Name??","Budhoo","Moto","Pgl","Satiya Hua"));
+        question_count=findViewById(R.id.questionNo);
+        cateogry=findViewById(R.id.category);
+        try {
+            for(int i=0;i<10;i++)
+            {
+                question_count.setText(i+"/10");
+                JSONObject object=response.getJSONObject(i);
+                cateogry.setText(object.getString("category"));
+                JSONObject options=object.getJSONObject("answers");
+                String correct_asnwers=object.getString("correct_answer");
+                list.add(new QuestionModel(object.getString("question"),options.getString("answer_a"),options.getString("answer_b"),options.getString("answer_c"),options.getString("answer_d")));
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
     }
-    private void setData(String count,String category){
-        question_count.setText(count);
-        cateogry.setText(category);
-    }
+
 
 }
