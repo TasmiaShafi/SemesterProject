@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/top_Bar"
-        android:background="@color/main_background"
+        android:background="@color/red_700"
         android:elevation="5dp"
         android:padding="16dp"
         android:orientation="horizontal"
