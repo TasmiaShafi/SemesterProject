@@ -24,9 +24,9 @@ public class Question extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //This code is used to hide Default Title Bar of Project
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
+        /*requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();*/
         setContentView(R.layout.activity_question);
         init();
         setData("1/10","GK");
@@ -48,6 +48,7 @@ public class Question extends AppCompatActivity {
         next=findViewById(R.id.next);
         list=new ArrayList<>();
         list.add(new QuestionModel("What is Your Name??","Budhoo","Moto","Pgl","Satiya Hua"));
+        list.add(new QuestionModel("What is Your Favourite Color??","Budhoo","Moto","Pgl","Satiya Hua"));
     }
     private void setData(String count,String category){
         question_count.setText(count);
