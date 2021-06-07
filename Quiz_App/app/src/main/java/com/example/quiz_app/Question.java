@@ -29,15 +29,16 @@ public class Question extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //This code is used to hide Default Title Bar of Project
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
+        /*requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();*/
         setContentView(R.layout.activity_question);
+        //question_count=findViewById(R.id.questionNo);
         init();
         createObjects();
         //Due to this Code the recyclerView ANd items in recyclerview will Appear in your Activity
-
-        QuestionAdapter adapter=new QuestionAdapter(list);
+        question_count=findViewById(R.id.questionNo);
+        QuestionAdapter adapter=new QuestionAdapter(list,question_count);
         questionView.setAdapter(adapter);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -49,17 +50,16 @@ public class Question extends AppCompatActivity {
         clr_btn=findViewById(R.id.clr_btn);
         prev=findViewById(R.id.previous);
         next=findViewById(R.id.next);
+
     }
 
     private void createObjects()
     {
         list=new ArrayList<>();
-        question_count=findViewById(R.id.questionNo);
         cateogry=findViewById(R.id.category);
         try {
             for(int i=0;i<10;i++)
             {
-                question_count.setText(i+"/10");
                 JSONObject object=response.getJSONObject(i);
                 cateogry.setText(object.getString("category"));
                 JSONObject options=object.getJSONObject("answers");
