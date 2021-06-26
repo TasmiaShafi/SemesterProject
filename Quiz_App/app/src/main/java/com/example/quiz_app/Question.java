@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -14,10 +16,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static android.graphics.Color.*;
+
 public class Question extends AppCompatActivity {
     private RecyclerView questionView;
     private TextView question_count,cateogry;
-    private Button submit,clr_btn;
+    private Button submit,clr_btn,optA;
     private ImageButton prev,next;
     ArrayList<QuestionModel>list;
     @Override
@@ -37,6 +41,7 @@ public class Question extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         questionView.setLayoutManager(linearLayoutManager);
+
     }
     private void init(){
         questionView=findViewById(R.id.questionView);
@@ -54,5 +59,6 @@ public class Question extends AppCompatActivity {
         question_count.setText(count);
         cateogry.setText(category);
     }
+
 
 }
