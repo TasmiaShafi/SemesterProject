@@ -14,8 +14,11 @@ import java.util.List;
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHolder> {
 
     private List<QuestionModel> list;
-    QuestionAdapter(List<QuestionModel> list){
+    private TextView question_count;
+    QuestionAdapter(List<QuestionModel> list,TextView question_count)
+    {
         this.list=list;
+        this.question_count=question_count;
     }
 
     @NonNull
@@ -30,6 +33,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull @org.jetbrains.annotations.NotNull QuestionAdapter.ViewHolder holder, int position) {
         String Question=list.get(position).getQuestion();
+        question_count.setText((position+1)+"/10");
         String A=list.get(position).getOptionA();
         String B=list.get(position).getOptionB();
         String C=list.get(position).getOptionC();
